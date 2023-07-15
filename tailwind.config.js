@@ -3,7 +3,7 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   purge: [],
-  darkMode: false, 
+  darkMode: false,
   theme: {
     extend: {
       spacing: {
@@ -15,6 +15,9 @@ module.exports = {
         'primary-orange': '#FF9E20',
         'secondary-orange': '#FEBD69',
         'secondary': '#FEBD69',
+      },
+      animation: {
+        'spin-slow': '1s linear infinite spin',
       },
     },
   },

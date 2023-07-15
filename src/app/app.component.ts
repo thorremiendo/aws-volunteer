@@ -11,14 +11,17 @@ export class AppComponent implements OnInit {
   volunteers: any;
   categoryKeys: string[] = [];
   selectedCategory: string = 'All';
+  isLoading: boolean = false
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.isLoading = true
     this.fetchVolunteers().subscribe((data: Category) => {
       this.volunteers = data;
       this.categoryKeys = Object.keys(this.volunteers);
       console.log(this.volunteers, this.categoryKeys);
+      this.isLoading = false
     });
   }
 
@@ -26,16 +29,16 @@ export class AppComponent implements OnInit {
     return this.categoryKeys.flatMap(category => this.volunteers[category]);
   }
 
-  // fetchVolunteers(): Observable<Category> {
-  //   const url = 'https://z3efpmw3k2.execute-api.ap-southeast-1.amazonaws.com/dev/volunteers';
-  //   return this.http.get<Category>(url);
-  // }
-
-
   fetchVolunteers(): Observable<Category> {
-    const url = 'assets/data/data.json';
+    const url = 'https://z3efpmw3k2.execute-api.ap-southeast-1.amazonaws.com/dev/volunteers';
     return this.http.get<Category>(url);
   }
+
+
+  // fetchVolunteers(): Observable<Category> {
+  //   const url = 'assets/data/data.json';
+  //   return this.http.get<Category>(url);
+  // }
 
   getImagePath(imgPath: string) {
     return `https://dl5qao1aeb4q4.cloudfront.net/${imgPath}`

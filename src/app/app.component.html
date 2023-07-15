@@ -5,77 +5,90 @@
 </nav>
 
 <div class="bg-secondary-blue min-h-screen flex flex-col">
-  <div class="container mx-auto w-full my-5">
-    <div class="flex mb-4 items-center flex-col">
-      <h1 class="text-5xl font-bold text-white my-5">
-        MEET THE <span class="text-primary-orange">VOLUNTEERS</span>
-      </h1>
-      <p class="text-xl text-white text-center">
-        Discover the collective brilliance of our diverse and dynamic team,
-        united by a passion for AWS, as we come together to inspire, educate,
-        and empower at AWS Community Day 2023.
-      </p>
-    </div>
-    <div class="flex mb-5 justify-center">
-      <button
-        class="mr-2 bg-gray-200 hover:bg-secondary-orange px-4 py-2 border border-black"
-        [class.bg-primary-orange]="selectedCategory === 'All'"
-        (click)="selectCategory('All')"
-      >
-        All
-      </button>
-      <button
-        class="mr-2 bg-gray-200 hover:bg-secondary-orange px-4 py-2 border border-black"
-        [class.bg-primary-orange]="selectedCategory === categoryName"
-        *ngFor="let categoryName of categoryKeys"
-        (click)="selectCategory(categoryName)"
-      >
-        {{ categoryName }}
-      </button>
-    </div>
-  </div>
-
-  <div class="container mx-auto w-full">
-    <ng-container *ngIf="selectedCategory === 'All'">
-      <div class="grid grid-cols-3 gap-4">
-        <div
-          class="bg-white p-4 shadow"
-          *ngFor="let volunteer of allVolunteers"
-        >
-          <img
-            class="h-20 w-20 rounded-full mx-auto mb-4"
-            [src]="getImagePath(volunteer.image_path)"
-          />
-          <h2 class="text-center text-lg font-bold mb-2">
-            {{ volunteer.complete_name }}
-          </h2>
-          <p class="text-center text-gray-700 mb-2">
-            {{ volunteer.email_address }}
-          </p>
-          <p class="text-center text-gray-700">{{ volunteer.role }}</p>
-        </div>
+  <div
+    *ngIf="isLoading"
+    class="loader w-16 h-16 border-t-4 border-b-4 border-gray-900 rounded-full animate-spin mx-auto my-5"
+  ></div>
+  <ng-container *ngIf="!isLoading">
+    <div class="container mx-auto w-full my-5">
+      <div class="flex mb-4 items-center flex-col">
+        <h1 class="text-5xl font-bold text-white my-5">
+          MEET THE <span class="text-primary-orange">VOLUNTEERS</span>
+        </h1>
+        <p class="text-xl text-white text-center">
+          Discover the collective brilliance of our diverse and dynamic team,
+          united by a passion for AWS, as we come together to inspire, educate,
+          and empower at AWS Community Day 2023.
+        </p>
       </div>
-    </ng-container>
-
-    <ng-container *ngIf="selectedCategory !== 'All'">
-      <div class="grid grid-cols-3 gap-4">
-        <div
-          class="bg-white p-4 shadow"
-          *ngFor="let volunteer of volunteers[selectedCategory]"
+      <div class="flex mb-5 justify-center">
+        <button
+          class="mr-2 bg-gray-200 hover:bg-secondary-orange px-4 py-2 border border-black"
+          [class.bg-primary-orange]="selectedCategory === 'All'"
+          (click)="selectCategory('All')"
         >
-          <img
-            class="h-20 w-20 rounded-full mx-auto mb-4"
-            [src]="getImagePath(volunteer.image_path)"
-          />
-          <h2 class="text-center text-lg font-bold mb-2">
-            {{ volunteer.complete_name }}
-          </h2>
-          <p class="text-center text-gray-700 mb-2">
-            {{ volunteer.email_address }}
-          </p>
-          <p class="text-center text-gray-700">{{ volunteer.role }}</p>
-        </div>
+          All
+        </button>
+        <button
+          class="mr-2 bg-gray-200 hover:bg-secondary-orange px-4 py-2 border border-black"
+          [class.bg-primary-orange]="selectedCategory === categoryName"
+          *ngFor="let categoryName of categoryKeys"
+          (click)="selectCategory(categoryName)"
+        >
+          {{ categoryName }}
+        </button>
       </div>
-    </ng-container>
-  </div>
+    </div>
+
+    <div class="container mx-auto w-full">
+      <ng-container *ngIf="selectedCategory === 'All'">
+        <div class="grid grid-cols-3 gap-4">
+          <div
+            class="bg-white p-4 shadow"
+            *ngFor="let volunteer of allVolunteers"
+          >
+            <img
+              class="h-20 w-20 rounded-full mx-auto mb-4"
+              [src]="getImagePath(volunteer.image_path)"
+            />
+            <h2 class="text-center text-lg font-bold mb-2">
+              {{ volunteer.complete_name }}
+            </h2>
+            <p class="text-center text-gray-700 mb-2">
+              {{ volunteer.email_address }}
+            </p>
+            <p class="text-center text-gray-700">{{ volunteer.role }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="selectedCategory !== 'All'">
+        <div class="grid grid-cols-3 gap-4">
+          <div
+            class="bg-white p-4 shadow"
+            *ngFor="let volunteer of volunteers[selectedCategory]"
+          >
+            <img
+              class="h-20 w-20 rounded-full mx-auto mb-4"
+              [src]="getImagePath(volunteer.image_path)"
+            />
+            <h2 class="text-center text-lg font-bold mb-2">
+              {{ volunteer.complete_name }}
+            </h2>
+            <p class="text-center text-gray-700 mb-2">
+              {{ volunteer.email_address }}
+            </p>
+            <p class="text-center text-gray-700">{{ volunteer.role }}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
 </div>
+<footer class="bg-primary-blue text-white py-5">
+  <div class="container mx-auto flex flex-col items-center">
+    <h2 class="text-xl font-bold">Powered by:</h2>
+    <img src="assets/logo-city.png" alt="Logo" class="w-20 my-4" />
+    <p class="text-center">City Government of Baguio</p>
+  </div>
+</footer>
