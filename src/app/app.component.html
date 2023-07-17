@@ -42,9 +42,11 @@
 
     <div class="container mx-auto w-full mb-5 pb-5 flex justify-center">
       <ng-container *ngIf="selectedCategory === 'All'">
-        <div class="grid grid-cols-5 gap-4 inline-block flex flex-wrap">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 inline-block flex flex-wrap"
+        >
           <div
-            class="bg-white p-4 w-220 shadow hover:bg-primary-orange flex justify-between flex-col flex-grow"
+            class="bg-white p-4 w-full sm:w-full md:w-220 lg:w-220 xl:w-220 shadow hover:bg-primary-orange flex justify-between flex-col flex-grow"
             *ngFor="let volunteer of allVolunteers"
           >
             <img
@@ -100,9 +102,11 @@
       </ng-container>
 
       <ng-container *ngIf="selectedCategory !== 'All'">
-        <div class="grid grid-cols-5 gap-4 inline-block flex flex-wrap">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 inline-block flex flex-wrap"
+        >
           <div
-            class="bg-white p-4 w-220 shadow hover:bg-primary-orange flex justify-between flex-col flex-grow"
+            class="bg-white p-4 w-full sm:w-full md:w-220 lg:w-220 xl:w-220 shadow hover:bg-primary-orange flex justify-between flex-col flex-grow"
             *ngFor="let volunteer of volunteers[selectedCategory]"
           >
             <img
