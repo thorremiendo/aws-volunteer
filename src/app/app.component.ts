@@ -58,6 +58,9 @@ interface Volunteer {
   image_path: string;
   comittee: string;
   role: string;
+  facebook: string;
+  linkedin: string;
+  twitter: string;
 }
 
 interface Category {

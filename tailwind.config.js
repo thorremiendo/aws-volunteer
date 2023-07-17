@@ -8,6 +8,14 @@ module.exports = {
     extend: {
       spacing: {
         '120': '120px',
+        '158': '158px',
+        '35': '35px'
+      },
+      width: {
+        '220': '220px',
+      },
+      height: {
+        '336': '336px',
       },
       colors: {
         'primary-blue': '#232F3E',
@@ -18,7 +26,7 @@ module.exports = {
       },
       animation: {
         'spin-slow': '1s linear infinite spin',
-      },
+      }
     },
   },
   variants: {

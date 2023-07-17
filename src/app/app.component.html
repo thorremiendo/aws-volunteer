@@ -40,45 +40,119 @@
       </div>
     </div>
 
-    <div class="container mx-auto w-full">
+    <div class="container mx-auto w-full mb-5 pb-5 flex justify-center">
       <ng-container *ngIf="selectedCategory === 'All'">
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-5 gap-4 inline-block flex flex-wrap">
           <div
-            class="bg-white p-4 shadow"
+            class="bg-white p-4 w-220 shadow hover:bg-primary-orange flex justify-between flex-col flex-grow"
             *ngFor="let volunteer of allVolunteers"
           >
             <img
-              class="h-20 w-20 rounded-full mx-auto mb-4"
+              class="h-158 w-158 rounded-full mx-auto mb-4"
               [src]="getImagePath(volunteer.image_path)"
             />
-            <h2 class="text-center text-lg font-bold mb-2">
-              {{ volunteer.complete_name }}
-            </h2>
-            <p class="text-center text-gray-700 mb-2">
-              {{ volunteer.email_address }}
-            </p>
-            <p class="text-center text-gray-700">{{ volunteer.role }}</p>
+            <div>
+              <h2 class="text-center text-lg font-bold">
+                {{ volunteer.complete_name }}
+              </h2>
+              <p class="text-center font-bold">
+                {{ volunteer.role }}
+              </p>
+              <p class="text-center text-gray-700">{{ volunteer.comittee }}</p>
+            </div>
+            <div class="mt-2 flex justify-center w-full">
+              <a
+                *ngIf="volunteer.facebook"
+                [href]="volunteer.facebook"
+                target="_blank"
+              >
+                <img
+                  src="assets/fb.png"
+                  alt="Facebook logo"
+                  class="h-35 w-35"
+                />
+              </a>
+              <a
+                *ngIf="volunteer.linkedin"
+                [href]="volunteer.linkedin"
+                target="_blank"
+              >
+                <img
+                  src="assets/linkedin.png"
+                  alt="Facebook logo"
+                  class="h-35 w-35"
+                />
+              </a>
+              <a
+                *ngIf="volunteer.twitter"
+                [href]="volunteer.twitter"
+                target="_blank"
+              >
+                <img
+                  src="assets/twitter.png"
+                  alt="Facebook logo"
+                  class="h-35 w-35"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </ng-container>
 
       <ng-container *ngIf="selectedCategory !== 'All'">
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-5 gap-4 inline-block flex flex-wrap">
           <div
-            class="bg-white p-4 shadow"
+            class="bg-white p-4 w-220 shadow hover:bg-primary-orange flex justify-between flex-col flex-grow"
             *ngFor="let volunteer of volunteers[selectedCategory]"
           >
             <img
-              class="h-20 w-20 rounded-full mx-auto mb-4"
+              class="h-158 w-158 rounded-full mx-auto mb-4"
               [src]="getImagePath(volunteer.image_path)"
             />
-            <h2 class="text-center text-lg font-bold mb-2">
-              {{ volunteer.complete_name }}
-            </h2>
-            <p class="text-center text-gray-700 mb-2">
-              {{ volunteer.email_address }}
-            </p>
-            <p class="text-center text-gray-700">{{ volunteer.role }}</p>
+            <div>
+              <h2 class="text-center text-lg font-bold">
+                {{ volunteer.complete_name }}
+              </h2>
+              <p class="text-center font-bold">
+                {{ volunteer.role }}
+              </p>
+              <p class="text-center text-gray-700">{{ volunteer.comittee }}</p>
+            </div>
+            <div class="mt-2 flex justify-center w-full">
+              <a
+                *ngIf="volunteer.facebook"
+                [href]="volunteer.facebook"
+                target="_blank"
+              >
+                <img
+                  src="assets/fb.png"
+                  alt="Facebook logo"
+                  class="h-35 w-35"
+                />
+              </a>
+              <a
+                *ngIf="volunteer.linkedin"
+                [href]="volunteer.linkedin"
+                target="_blank"
+              >
+                <img
+                  src="assets/linkedin.png"
+                  alt="Facebook logo"
+                  class="h-35 w-35"
+                />
+              </a>
+              <a
+                *ngIf="volunteer.twitter"
+                [href]="volunteer.twitter"
+                target="_blank"
+              >
+                <img
+                  src="assets/twitter.png"
+                  alt="Facebook logo"
+                  class="h-35 w-35"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </ng-container>
@@ -87,7 +161,9 @@
 </div>
 <footer class="bg-primary-blue text-white py-5">
   <div class="container mx-auto flex flex-col items-center">
-    <h2 class="text-xl font-bold">Powered by:</h2>
+    <h2 class="text-xl font-bold">
+      Powered by: <a href=""> <i class="bi bi-linkedin"></i></a>
+    </h2>
     <img src="assets/logo-city.png" alt="Logo" class="w-20 my-4" />
     <p class="text-center">City Government of Baguio</p>
   </div>
